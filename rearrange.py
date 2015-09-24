@@ -8,5 +8,4 @@ for args in argv:
 words.remove(argv[0])
 
 random.shuffle(words)
-for word in words:
-    print(word)
+print(*words)
