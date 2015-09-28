@@ -1,8 +1,7 @@
 import re
-import string
-import random
 from sys import argv
-import pdb
+#import pdb
+#import operator
 
 
 
@@ -18,7 +17,7 @@ def histogram(source_text):
             filter_text(word)
             histo[word] += 1
     for key, value in histo.items():
-        histo_new[key] = (value / len(source_text))
+        histo_new[key] = ((value / len(source_text)))
     return histo_new
 
 def filter_text(word):
@@ -29,15 +28,12 @@ def filter_text(word):
 
 def random_sentence(word_count):
     sentence = []
-    returned_hist = histogram(source_text)
-    #histo_new = sorted(histo_new.items(), key=operator.itemgetter(1))
-    counter = 0
-    while counter < word_count:
-        for word, freq in returned_hist.items():
-            if freq >= .02: #(1 - (word_count / len(histo_new))):
+    returned_histo = histogram(source_text)
+    #returned_histo = sorted(operator.values(), reverse=True)
+    while len(sentence) < word_count:
+        for word, freq in returned_histo.items():
+            if freq >= (1 - (word_count / len(returned_histo))):
                 sentence.append(word)
-        counter += 1
-
     return sentence
 
 
