@@ -1,11 +1,12 @@
+import random
 import re
 from sys import argv
 #import pdb
-import operator
+#import operator
 
 
 
-source_text = open('sample.txt').read().split()
+source_text = open('book.txt').read().split()
 def histogram(source_text):
     histo = {}
     histo_new = {}
@@ -31,11 +32,13 @@ def compare(a):
 
 def random_sentence(word_count):
     sentence = []
+    sentence_random = []
     returned_histo = histogram(source_text)
     returned_histo = sorted(returned_histo.items(), reverse=True, key=compare)
     for word, freq in returned_histo[:word_count]:
         sentence.append(word)
 
+    random.shuffle(sentence)
     return sentence
 
 
