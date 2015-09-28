@@ -2,13 +2,14 @@ import re
 import string
 import random
 from sys import argv
+import pdb
 
-word_count = len(argv)
-sentence = []
-histo = {}
+
 
 source_text = open('sample.txt').read().split()
 def histogram(source_text):
+    histo = {}
+    histo_new = {}
     for word in source_text:
         if word not in histo:
             filter_text(word)
@@ -26,15 +27,20 @@ def filter_text(word):
         word = word.rstrip('_')
         return word
 
-def random_sentence():
-    histogram(source_text)
+def random_sentence(word_count):
+    sentence = []
+    returned_hist = histogram(source_text)
     #histo_new = sorted(histo_new.items(), key=operator.itemgetter(1))
+    counter = 0
     while counter < word_count:
-        for key, value in histo_new:
-            if value > (1 - (word_count / len(histo_new))):
-                sentence.append(key)
-    return sentence.items()
+        for word, freq in returned_hist.items():
+            if freq >= .02: #(1 - (word_count / len(histo_new))):
+                sentence.append(word)
+        counter += 1
+
+    return sentence
 
 
 if __name__ == '__main__':
-    print(random_sentence)
+    word_count = int(argv[1])
+    print(random_sentence(word_count))
