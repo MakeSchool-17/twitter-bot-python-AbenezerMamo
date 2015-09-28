@@ -2,11 +2,9 @@ import re
 import string
 
 source_text = open('sample.txt').read().split()
-
-
-histo = {}
-histo_new = {}
 def histogram(source_text):
+    histo = {}
+    histo_new = {}
     for word in source_text:
         if word not in histo:
             new_word = re.sub(r"\W+", "", word)
@@ -18,18 +16,11 @@ def histogram(source_text):
             new_word = new_word.lstrip('_')
             new_word = new_word.rstrip('_')
             histo[new_word] += 1
-        for word in histo:
-            histo_new[word] /= len(source_text)
-
-
-def random_sentence():
-    histogram(source_text)
-    for key, value in histo_new:
-        if value >= 0:
-            sentence.append(key)
-    return sentence
-
+    for key, value in histo.items():
+        histo_new[key] = (value / len(source_text))
+    return histo_new
 
 
 if __name__ == '__main__':
-    print(random_sentence())
+    print(histogram(source_text))
+    print(len(source_text))
