@@ -37,7 +37,7 @@ def random_sentence(word_count):
     returned_histo = sorted(returned_histo.items(), reverse=True, key=compare)
     for word, freq in returned_histo[:word_count]:
         sentence.append(word)
-
+    #optional for randomizing the sentences. Commenting next line will order the sentence in frequency of words
     random.shuffle(sentence)
     return sentence
 
