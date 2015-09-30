@@ -11,18 +11,19 @@ def histogram(source_text):
     histo = []
     index = 0
     for word in source_text:
-        filter(word)
-        if word in histo:
-            histo.append((word, 0))
-            index += 1
-        else:
-            histo[index][1] += 1
-            index += 1
+        format_word(word)
+        for histo_word, freq in histo:
+            if histo_word == word:
+                histo[index][1] += 1
+                index += 1
+            else:
+                histo.append((word, 0))
+                index += 1
 
     return histo
 
 
-def filter(word):
+def format_word(word):
     re.sub(r'-_W+', '', word)
     word = word.lstrip('_-?.,"')
     word = word.rstrip('_-?.,"')
