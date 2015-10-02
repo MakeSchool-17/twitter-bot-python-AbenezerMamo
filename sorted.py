@@ -1,16 +1,18 @@
 import random
 import re
-import linkedlists
+from linkedlists import *
 
-source_text = open('book.txt').read().split()
+source_text = open('sample.txt').read().split()
 
 def histogram(source_text):
     histo = LinkedList()
     for word in source_text:
+        word = format_word(word)
         if histo.find(word) == None:
-            histo.insert(word, 0)
+            histo.insert([word, 1])
         else:
-            pass
+            histo.find(word).data[1] += 1
+    return histo.head.data
 
 
 def format_word(word):
@@ -20,7 +22,8 @@ def format_word(word):
     return word
 
 def frequency(word):
-    histo.find(word)
+    return histo.find(word)[1]
 
 if __name__ == '__main__':
     """Implementation of the histogram script using the linked list data structure"""
+    print(histogram(source_text))

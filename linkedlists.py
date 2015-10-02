@@ -1,9 +1,9 @@
-import Node                                     # Have to import
+from node import *                                   # Have to import
 
 
 class LinkedList:                               # Class creation
-    def __init__(self, data):                   # Init
-        self.head = Node(data)                  # Set head
+    def __init__(self):                   # Init
+        self.head = None                  # Set head
 
     def insert(self, data):                     # Insert
         new_node = Node(data)                   # Create node with data
@@ -14,7 +14,7 @@ class LinkedList:                               # Class creation
         current = self.head                     # Tracker, start at head
         while current:                          # Check if exists
             if current.data[0] == key:          # Check value
-                return current.data[1]          # Return if found
+                return current                  # Return the node if found. To acesss, just call current.data[1]
             current = current.next_node         # Keep going
         return None                             # Give up
 
