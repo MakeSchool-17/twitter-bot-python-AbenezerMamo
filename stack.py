@@ -4,8 +4,7 @@ class Stack:
         self.head = None
         self.size = 0
 
-
-    def push(self):
+    def push(self, data):
         new_node = Node()
         new_node.data = data
         next_node = self.head
@@ -23,7 +22,7 @@ class Stack:
             return first_element.data
 
     def peek(self):
-        if self.is_empty: # If this exists. You can also check if self.head actually exists
+        if self.is_empty():
             return None
         else:
             return self.head.data
@@ -35,13 +34,25 @@ class Stack:
         return_str = ''
         current_node = self.head
         while current_node is not None:
-            return_str += str(current_node.data)
+            return_str += str(current_node.data) + ' '
             current_node = current_node.next
         return return_str
 
     def is_empty(self):
         return self.head is None
 
+
 class Node:
     def __init__(self):
-        pass
+        self.data = None
+        self.next = None
+
+if __name__ == '__main__':
+    test_stack = Stack()
+    test_stack.push('a')
+    test_stack.push('b')
+    test_stack.push('c')
+    print(test_stack)
+    first_item = test_stack.pop()
+    print('popped ' + str(first_item))
+    print(test_stack)
