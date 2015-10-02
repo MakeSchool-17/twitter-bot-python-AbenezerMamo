@@ -12,7 +12,7 @@ def histogram(source_text):
             histo.insert([word, 1])
         else:
             histo.find(word).data[1] += 1
-    return histo.head.data
+    return histo
 
 
 def format_word(word):
@@ -22,8 +22,10 @@ def format_word(word):
     return word
 
 def frequency(word):
-    return histo.find(word)[1]
+    return histo.find(word).data[1]
 
 if __name__ == '__main__':
     """Implementation of the histogram script using the linked list data structure"""
-    print(histogram(source_text))
+    histo = {}
+    histo = histogram(source_text)
+    
