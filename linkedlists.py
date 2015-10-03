@@ -34,7 +34,7 @@ class LinkedList:                               # Class creation
             deleted_node = self.head                                # Remembers the code to be deleted
             self.head = current.next_node                           # This actually deletes it by skipping the Node deleted
             return deleted_node                                     # Returns the deleted node.....you know just in case
-        while current:                                              # Check to see if we still have nodes left
+        while current.next_node:                                    # Check to see if we still have nodes left and one you can change the pointer to
             if current.next_node.data[0] == key:                    # Checks to see if it found the key
                 deleted_node = current.next_node                    # If it is there, then it just remembers it
                 current.next_node = current.next_node.next_node     # This deletes it by skipping the pointer to the deleted node
