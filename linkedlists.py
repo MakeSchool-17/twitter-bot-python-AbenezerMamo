@@ -18,15 +18,11 @@ class LinkedList:                               # Class creation
             current = current.next_node         # Keep going
         return None                             # Give up
 
-    def return_data(self):
-        current_node = self.head
-        returned_data = []
-        while current_node is not None:
-            returned_data.append(current_node.data)
-            current_node = current_node.next_node
-
-        return returned_data
-
+    def return_data(self, key):
+        data = self.find(key)
+        if data:
+            return data.data[1]
+        return None
 
     def delete(self, key):                                          # Delete
         current = self.head                                         # Set starting point
