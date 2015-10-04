@@ -6,12 +6,14 @@ class HashTable:
         while len(self.hashtable) < 10:
             self.hashtable.append(LinkedList())
         self.size = 0
+        self.keys = []
+
 
     def set(self, key, data):
         index_key = hash(key) % len(self.hashtable) # Bucket index
         self.hashtable[index_key].insert([key, data])
         self.size += 1
-
+        self.keys.append(key)
 
     def get(self, key):
         index_key = hash(key) % len(self.hashtable)
@@ -23,7 +25,10 @@ class HashTable:
 
 
     def get_keys(self):
-        pass
+        return self.keys
 
     def get_values(self):
-        pass
+        values = []
+        for key in self.keys:
+            values.append(self.get(key))
+        return values
